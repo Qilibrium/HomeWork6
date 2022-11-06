@@ -13,4 +13,9 @@ public class DatabaseInitService {
 
         flyway.migrate();
     }
+
+    public static void main(String[] args) {
+        Database database = Database.getInstance();
+        new DatabaseInitService().initDb(database);
+    }
 }

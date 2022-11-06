@@ -12,7 +12,7 @@ public class ClientService {
     private String deleteById = "DELETE FROM CLIENT WHERE ID = ?";
     private   String listAll = "SELECT id, name FROM client GROUP BY id";
 
-    long create(String name) throws SQLException {
+    public long create(String name) throws SQLException {
         PreparedStatement statement = Database.getInstance().getConnection().prepareStatement(createClient);
         statement.setString(1, name);
         int rowsInserted = statement.executeUpdate();
@@ -30,7 +30,7 @@ public class ClientService {
         return id;
     }
 
-    String getById(long id) throws SQLException {
+    public String getById(long id) throws SQLException {
         Client client = new Client();
         PreparedStatement ps = Database.getInstance().getConnection().prepareStatement(getById);
         ps.setLong(1, id);
@@ -45,20 +45,20 @@ public class ClientService {
         }
     }
 
-    void setName(long id, String name) throws SQLException {
+    public void setName(long id, String name) throws SQLException {
         PreparedStatement ps = Database.getInstance().getConnection().prepareStatement(updateName);
         ps.setString(1, name);
         ps.setLong(2, id);
         ps.executeUpdate();
     }
 
-    void deleteById(long id) throws SQLException {
+    public  void deleteById(long id) throws SQLException {
         PreparedStatement ps = Database.getInstance().getConnection().prepareStatement(deleteById);
         ps.setLong(1, id);
         ps.executeUpdate();
     }
 
-    List<Client> listAll() throws SQLException {
+    public List<Client> listAll() throws SQLException {
 
         PreparedStatement ps = Database.getInstance().getConnection().prepareStatement(listAll);
         try (ResultSet rs = ps.executeQuery()) {
