@@ -1,0 +1,6 @@
+{
+  "dbUrl": "jdbc:h2:./test",
+  "initDbSql": "./sql/init_db.sql",
+  "populateDbSql": "./sql/populate_db.sql"
+
+}
